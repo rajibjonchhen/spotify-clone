@@ -1,12 +1,12 @@
 import './sidebar.css'
-
+import brand from '../../assets/Spotify_Logo_RGB_White.png'
 
 const Sidebar = () => {
 
     return(<>
     <div className="col-2 side-bar show">
-                <div className="d-flex py-3"><a href="./home-page.html"><img src="./assets/Spotify_Logo_RGB_White.png"
-                            alt="logo" height="40px"/></a></div>
+                <div className="d-flex py-3"><a href="./home-page.html"><img src={brand}
+                            alt=" spotify logo" height="40px"/></a></div>
                 <a href="./home-page.html">
                     <div className="home d-flex"><i className="bi bi-house-door-fill my-2 px-3"></i><strong>Home</strong></div>
                 </a>
