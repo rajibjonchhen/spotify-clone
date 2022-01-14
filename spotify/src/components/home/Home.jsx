@@ -1,43 +1,55 @@
 import {useState, useEffect} from 'react'
-import {Col} from 'react-bootstrap'
-const Home = () => {
+import {Container, Col} from 'react-bootstrap'
+import SongSection from './SongSection'
+const Home = ({search}) => {
     
-const[arryOfSinger,SetArrayOfSinger] = useState( ["eminem","metallica","behemoth"])
+
+
 const[songs, setSongs]=useState()
-// useEffect(()=>{
-    
-//         loadAlbums()
+
+
+useEffect((search)=>{    
    
-// },[])
+    search? loadAlbums(search):loadAlbums("eminem")   
+
+})
 
 
-// const loadAlbums = function(arrayOfSinger){
+const loadAlbums = async(singer)=>{
 
 //    arrayOfSinger.map(singer=>{
+    try {
+        console.log('loadAlbum is called ')
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + singer, {
+           "method": "GET",
+           "headers": {
+               "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+               "x-rapidapi-key": "a2e00d2d7fmsh97d81a4d7786418p174eacjsnd97f660026b9"
+           }})
+       let data = await response.json()
+     
+           console.log("response", response);
+           console.log("jsonData" , data.data);
+           if(response.ok){
+                setSongs(data.data)
+            }
+    } catch (error) {
+        console.log(error)
+    }
+    
 
-//        fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + singer, {
-//            "method": "GET",
-//            "headers": {
-//                "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-//                "x-rapidapi-key": "a2e00d2d7fmsh97d81a4d7786418p174eacjsnd97f660026b9"
-//            }
-//        .then(response => response.json()) 
-//        .then(jsonData => {
-//            console.log(jsonData);
-//            if(jsonData){
-//                 setSongs(jsonData.data)
-//             }
-//        })
-//    })
 //    })
    
-// }
+}
 
 
 
 
     return ( <>
-      
+    <Container style={{backgroundColor:'rgb(37,68,106)'}} fluid>
+      <h1>this is home</h1>
+           {songs &&  <SongSection songs={songs}/>}
+    </Container>
       {/* {songs?    (songs.slice(0,6).map(song => {
                         <Col className="col-12 col-sm-6 col-md-4">
                             <div class="small-card align-items-center position-relative">

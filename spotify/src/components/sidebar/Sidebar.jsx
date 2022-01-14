@@ -1,18 +1,19 @@
 import './sidebar.css'
 import brand from '../../assets/Spotify_Logo_RGB_White.png'
-
-const Sidebar = () => {
-
+import {useState} from 'react'
+const Sidebar = ({setSearch,search}) => {
+const[showSearch, setShowSearch] = useState()
     return(<>
     <div className="col-2 side-bar show">
                 <div className="d-flex py-3"><a href="./home-page.html"><img src={brand}
                             alt=" spotify logo" height="40px"/></a></div>
-                <a href="./home-page.html">
+                <a >
                     <div className="home d-flex"><i className="bi bi-house-door-fill my-2 px-3"></i><strong>Home</strong></div>
                 </a>
-                <a href="search-page.html" className="text-white">
-                    <div className="search d-flex"><i className="bi bi-search my-2 px-3"></i><strong>Search</strong></div>
+                <a  className="text-white">
+                    <div className="search d-flex" onClick={(e)=>setShowSearch(true)}><i className="bi bi-search my-2 px-3"></i><strong>Search</strong></div>
                 </a>
+                <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)}style={{display:showSearch? 'block':'none'}}/>
                 <div className="library d-flex"><i className="bi bi-list my-2 px-3"></i><strong>Your Library</strong></div>
 
                 <div className="square d-flex mt-3"><i className="bi bi-plus-square-fill my-2 px-3"></i><strong>Create

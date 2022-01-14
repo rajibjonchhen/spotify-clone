@@ -94,3 +94,9 @@
     justify-content: center;
   }
   
+  #playTime{
+    width:300px;
+  }
+  #volume{
+    width:80px;
+  }
