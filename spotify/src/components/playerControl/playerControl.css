@@ -1,0 +1,96 @@
+.pod-img {
+    border-radius: 15%;
+  }
+  
+  .art-img {
+    border-radius: 50%;
+  }
+  
+  .play-circle {
+    color: #1db954;
+    font-size: 35px;
+    z-index: 1;
+  }
+  
+  .play-circle::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: white;
+    top: 10px;
+    left: 10px;
+    z-index: -1;
+  }
+  
+  .play-btn {
+    top: 5px;
+    left: 12px;
+    z-index: 20;
+    transition: all 0.3s linear;
+  }
+  
+  .small-card:not(:hover) .play-btn {
+    opacity: 0;
+  }
+  
+  .play-circle2 {
+    color: #1db954;
+    font-size: 50px;
+    z-index: 1;
+  }
+  
+  .play-circle2::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: white;
+    top: 15px;
+    left: 15px;
+    z-index: -1;
+  }
+  
+  .play-btn2 {
+    top: 52px;
+    left: 65px;
+    z-index: 20;
+    transition: all 0.3s linear;
+  }
+  
+  .card:not(:hover) .play-btn2 {
+    opacity: 0;
+  }
+  
+  .small-card:hover,
+  .card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(139, 139, 139, 0.5);
+  }
+  
+  .last-container {
+    padding-bottom: 110px;
+  }
+  
+  i:hover{
+    transform: scale(1.1);
+  }
+  
+  .play-bar{
+    height: 110px;
+    width: 100vw;
+    background-color:rgb(24,24,24);
+    position: fixed;
+    bottom:0;
+    z-index: 100;
+    color: rgb(167, 160, 160);
+  }
+  
+  .play-hidden-center {
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+  }
+  
