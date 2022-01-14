@@ -1,15 +1,23 @@
 import './sidebar.css'
 import brand from '../../assets/Spotify_Logo_RGB_White.png'
 import {useState} from 'react'
+import {Link} from 'react-router-dom'
+
 const Sidebar = ({setSearch,search}) => {
 const[showSearch, setShowSearch] = useState()
     return(<>
     <div className="col-2 side-bar show">
-                <div className="d-flex py-3"><a href="./home-page.html"><img src={brand}
-                            alt=" spotify logo" height="40px"/></a></div>
-                <a >
+                <div className="d-flex py-3">
+                    <Link to="/">
+                        <img src={brand}alt=" spotify logo" height="40px"/>
+                    </Link>
+                        </div>
+                    <Link to="/">
+
                     <div className="home d-flex"><i className="bi bi-house-door-fill my-2 px-3"></i><strong>Home</strong></div>
-                </a>
+                    </Link>
+              
+                
                 <a  className="text-white">
                     <div className="search d-flex" onClick={(e)=>setShowSearch(true)}><i className="bi bi-search my-2 px-3"></i><strong>Search</strong></div>
                 </a>

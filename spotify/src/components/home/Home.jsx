@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import {Container, Col} from 'react-bootstrap'
 import SongSection from './SongSection'
+import {Link} from 'react-router-dom'
+ 
 const Home = ({search}) => {
     
 
@@ -8,11 +10,11 @@ const Home = ({search}) => {
 const[songs, setSongs]=useState()
 
 
-useEffect((search)=>{    
+useEffect(()=>{    
    
     search? loadAlbums(search):loadAlbums("eminem")   
 
-})
+},[search])
 
 
 const loadAlbums = async(singer)=>{
@@ -46,9 +48,14 @@ const loadAlbums = async(singer)=>{
 
 
     return ( <>
-    <Container style={{backgroundColor:'rgb(37,68,106)'}} fluid>
-      <h1>this is home</h1>
-           {songs &&  <SongSection songs={songs}/>}
+    <Container className='text-white' style={{backgroundColor:'rgb(37,68,106)'}} fluid>
+    {songs && (<>
+        <Link to={"/Artist/" + songs[0].artist.id}>
+            <p className="h1 text-left text-white">{search? search:"eminem"}</p>
+        </Link>
+            <SongSection songs={songs}/>
+    </>
+            )}
     </Container>
       {/* {songs?    (songs.slice(0,6).map(song => {
                         <Col className="col-12 col-sm-6 col-md-4">
