@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
+import Loader from '../Loader'
 
 const Artist = () => {
 
     const params = useParams()
     const [songs,setSongs]=useState({})
-    const[isLoading,setIsLoading]=useState(false)
+    const[isLoading,setIsLoading]=useState(true)
     const[errorHandle,setErrorHandle]=useState(false)
 
 
@@ -18,7 +19,8 @@ const Artist = () => {
 
     const fetchSongs = async(ArtistId) =>{
         
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + ArtistId , {
+      try {
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + ArtistId , {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -28,46 +30,34 @@ const Artist = () => {
 
        let data = await response.json()
         if(response.ok){
-    
-            setSongs(data.data)
-           
+        console.log(data)
+            setSongs(data)
+           setIsLoading(false)
         }
+      } catch (error) {
+          console.log(error)
+          setIsLoading(false)
+
+      }
     }
 
     return(<>
-    {songs && (<table ClassName="table table-borderless text-white ml-4">
+        <table className="table table-borderless text-white ml-4">
         <tbody>
-            {songs.map((song)=>(
-                <tr ClassName="align-baseline">
-                <td>
-                <div>1</div>
-                </td>
-                <td>
-                <div> 
-                    <img src="${songs.picture_xl}" style="width:50px" alt=""/>
-                    </div>
-                </td>
-                <td>
-                <div>
-                    ${song.title}</div>
-                </td>
-                <td>
-                <div>
-                    <div>1,222,432,345</div>
-                </div>
-                </td>
-                <td>
-                <div> <a href=""><i ClassName="far fa-heart"></i></a></div>
-                </td>
-                <td>
-                <div> 3:24</div>
-                </td>
+           
+    {/* {isLoading? (<Loader/>):(songs && songs.map((song)=>(
+            <tr className="align-baseline"><td><div>1</div></td>
+                <td><div> <img src={songs.picture} style={width:"50px"} alt=""/></div></td>
+                <td><div>${song.title}</div></td>
+                <td><div>1,222,432,345</div></td>
+                <td><div> <a href=""><i className="far fa-heart"></i></a></div></td>
+                <td><div> 3:24</div></td>
             </tr>
-            ))}
+    )
+            )
+             )} */}
         </tbody>
         </table>
-
-    )}
     </>)
 }
 

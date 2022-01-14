@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import {Container, Col} from 'react-bootstrap'
 import SongSection from './SongSection'
 import {Link} from 'react-router-dom'
- 
+import Loader from '../Loader'
 const Home = ({search}) => {
     
 
