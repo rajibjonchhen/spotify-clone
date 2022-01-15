@@ -4,13 +4,12 @@ import {Row} from 'react-bootstrap'
 
 const SongSection = ({songs}) => {
 
-    return(
-       
-    <Row>
-    {songs &&
-    songs.map(song=>(
-        <SongCard key={song.id} song={song}/>))}
-</Row>
+    return(<>
+
+    {songs && songs.map((song)=> (
+        <SongCard key={song.id} song={song}/>
+        ))}
+        </>
 )
 }
 
