@@ -8,17 +8,14 @@ import Loader from '../Loader'
 
 const Artist = () => {
     
-
 const[songs, setSongs]=useState([])
 const params = useParams()
-
 
 useEffect(()=>{    
    let ArtistId = params.ArtistId
     ArtistId? loadAlbums(ArtistId):loadAlbums("17")   
     console.log(ArtistId)
 },[])
-
 
 const loadAlbums = async(ArtistId)=>{
     try {
@@ -37,9 +34,6 @@ const loadAlbums = async(ArtistId)=>{
         console.log(error)
     }
 }
-
-
-
 
     return ( <Container>
         <h1>Album Page</h1>

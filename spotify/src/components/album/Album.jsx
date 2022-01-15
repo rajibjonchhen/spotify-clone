@@ -8,17 +8,15 @@ const Album = () => {
 const params = useParams()
 const[songs, setSongs]=useState([])
 
-
     useEffect(()=>{
         const AlbumId = params.AlbumId
         console.log(AlbumId)
         loadAlbums(AlbumId)
     },[])
 
-
     const loadAlbums = async(AlbumId)=>{
         try {
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + AlbumId, {
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/album/" + AlbumId, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -33,7 +31,6 @@ const[songs, setSongs]=useState([])
         }
     }
 
-
     return(<Container>
             <h1>Album Page</h1>
         <Row>{
@@ -46,7 +43,7 @@ const[songs, setSongs]=useState([])
                             <p className="card-text">{song.title}</p>
                         </div>
                     </div>
-                                ))
+                    ))
         }</Row>
     </Container>
     )
