@@ -7,7 +7,7 @@ const SongCard = ({song}) => {
         <Col>
             <div>
                 <Link to={"/Album/" + song.album.id}>
-                <img src={song.album.cover} alt={song.title} />
+                <img src={song.album.cover} alt={song.album.title} />
                 </Link>
             </div>
             <div>
