@@ -14,22 +14,21 @@ const[showSearch, setShowSearch] = useState()
                         </div>
                     <Link to="/">
 
-                    <div className="home d-flex"><i className="bi bi-house-door-fill my-2 px-3"></i><strong>Home</strong></div>
+                    <div className="home d-flex align-items-center"><i className="bi bi-house-door-fill my-2 px-3"></i><strong>Home</strong></div>
                     </Link>
-              
                 
-                <a  className="text-white">
-                    <div className="search d-flex" onClick={(e)=>setShowSearch(true)}><i className="bi bi-search my-2 px-3"></i><strong>Search</strong></div>
-                </a>
+                
+                <div className="search d-flex align-items-center" onClick={(e)=>setShowSearch(!showSearch)}><i className="bi bi-search my-2 px-3"></i><strong>Search</strong></div>
+                
                 <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)}style={{display:showSearch? 'block':'none'}}/>
-                <div className="library d-flex"><i className="bi bi-list my-2 px-3"></i><strong>Your Library</strong></div>
+                <div className="library d-flex align-items-center"><i className="bi bi-list my-2 px-3"></i><strong>Your Library</strong></div>
 
                 <div className="square d-flex mt-3"><i className="bi bi-plus-square-fill my-2 px-3"></i><strong>Create
                         Playlists</strong></div>
                 <div className="liked-songs d-flex mt-1"><i className="bi bi-heart-fill px-3"></i><strong>Liked Songs</strong>
                 </div>
                 <hr/>
-                <div className="sidebar-list mr-n2">
+                <div className="sidebar-list mr-n2" style={{fontSize:'12px'}}>
                     <p className="my-1">Boiler Room: Room 1 &#128293</p>
                     <p className="my-1">L'Imperatrice Mix</p>
                     <p className="my-1">Oceanvs Orientalis &#127769</p>
