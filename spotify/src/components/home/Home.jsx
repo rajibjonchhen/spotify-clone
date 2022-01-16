@@ -23,7 +23,8 @@ const loadAlbums = async(singer)=>{
        let data = await response.json()
            if(response.ok){
                 setSongs(data.data)
-                setArtistId(data.data[0].artist)
+                console.log(data.datax)
+                setArtistId(data.data[0].artist.id)
             }
     } catch (error) {
         console.log(error)
