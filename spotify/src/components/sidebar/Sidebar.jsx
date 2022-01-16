@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom'
 
 const Sidebar = ({setSearch,search}) => {
 const[showSearch, setShowSearch] = useState()
+
+
     return(<>
     <div className="col-2 side-bar show">
                 <div className="d-flex py-3">
@@ -20,7 +22,7 @@ const[showSearch, setShowSearch] = useState()
                 
                 <div className="search d-flex align-items-center" onClick={(e)=>setShowSearch(!showSearch)}><i className="bi bi-search my-2 px-3"></i><strong>Search</strong></div>
                 
-                <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)}style={{display:showSearch? 'block':'none'}}/>
+                <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} style={{display:showSearch? 'block':'none'}}/>
                 <div className="library d-flex align-items-center"><i className="bi bi-list my-2 px-3"></i><strong>Your Library</strong></div>
 
                 <div className="square d-flex mt-3"><i className="bi bi-plus-square-fill my-2 px-3"></i><strong>Create

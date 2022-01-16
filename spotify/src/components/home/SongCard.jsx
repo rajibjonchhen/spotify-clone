@@ -5,19 +5,19 @@ import { useEffect } from 'react'
 const SongCard = ({song}) => {
 
    
+    console.log(song)
     return(
         <Col>
         {song && (<div>
-            console.log(song)
         <div>
             <Link to={"/Album/" + song.album.id}>
             <img src={song.album.cover} alt={song.album.title} />
             </Link>
         </div>
         <div>
-            <span>{song.title}</span>
+            <p>{song.title}</p>
             <Link to={"/Artist/" + song.artist.id} >
-            <span>ghjk</span>
+            <p>{song.artist.name}</p>
             </Link>
             
         </div>
