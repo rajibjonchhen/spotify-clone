@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import {Container, Row, } from 'react-bootstrap'
-import SongSection from '../home/SongSection'
-
+import Track from './Track'
 const Album = () => {
 
 const params = useParams()
-const[songs, setSongs]=useState([])
+const[album, setAlbum]=useState([])
+const[tracks, setTracks]=useState([])
 
     useEffect(()=>{
         const AlbumId = params.AlbumId
@@ -23,8 +23,11 @@ const[songs, setSongs]=useState([])
                 "x-rapidapi-key": "a2e00d2d7fmsh97d81a4d7786418p174eacjsnd97f660026b9"
             }})
         let data = await response.json()
+        console.log(data.tracks.data[0])
         if(response.ok){
-                    setSongs(data)
+            setAlbum(data)
+            setTracks(data.tracks.data)
+                    
                 }
         } catch (error) {
             console.log(error)
@@ -33,18 +36,23 @@ const[songs, setSongs]=useState([])
 
     return(<Container>
             <h1>Album Page</h1>
-        <Row>{
-            songs.map(song => (
-                <div className="card col-sm-6 col-md-4 col-lg-2 position-relative">
+        <Row>{album && (<> <div className="card col-sm-6 col-md-4 col-lg-2 position-relative">
                         <div className="play-btn2 position-absolute"><i
                                 className="bi bi-play-circle-fill play-circle2 position-relative"></i></div>
-                        <img src={song.album.cover_big} className="card-img-top pt-3" alt="cover"/>
+                        <img src={album.cover} className="card-img-top pt-3" alt="cover"/>
                         <div className="card-body mx-n3 mt-n2">
-                            <p className="card-text">{song.title}</p>
+                            <p className="card-text">{album.title}</p>
                         </div>
                     </div>
-                    ))
+                    </>)
         }</Row>
+        <Row>
+                    <table>
+                        <tbody>
+                        {tracks.map((track,i)=>(<Track key={i} track={track} i={i}/>))}
+                        </tbody>
+                        </table>
+        </Row>
     </Container>
     )
 }

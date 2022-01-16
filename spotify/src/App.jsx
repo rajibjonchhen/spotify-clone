@@ -7,6 +7,7 @@ import Home from './components/home/Home';
 import Artist from './components/artist/Artist'
 import Album from './components/album/Album';
 import MyLayout from './components/myLayout/MyLayout';
+import ErrorPage from './ErrorPage.jsx'
 function App() {
   const[search,setSearch] = useState( "")
   
@@ -25,6 +26,8 @@ function App() {
         <Route path='/Album/:AlbumId' element={<MyLayout>
           <Album/>
         </MyLayout>}/>
+
+         <Route path='*' element={<ErrorPage/>}/> 
 
       </Routes>
       </BrowserRouter>

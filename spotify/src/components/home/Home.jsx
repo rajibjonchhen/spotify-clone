@@ -6,7 +6,7 @@ import Loader from '../Loader'
 const Home = ({search}) => {
 
 const[songs, setSongs]=useState([])
-
+const [artistId, setArtistId]=useState()
 useEffect(()=>{       
     search? loadAlbums(search):loadAlbums("eminem")   
     },[search])
@@ -23,7 +23,7 @@ const loadAlbums = async(singer)=>{
        let data = await response.json()
            if(response.ok){
                 setSongs(data.data)
-                console.log(data.data)
+                setArtistId(data.data[0].artist)
             }
     } catch (error) {
         console.log(error)
@@ -34,7 +34,7 @@ const loadAlbums = async(singer)=>{
     return ( <>
     <Container className='text-white' style={{backgroundColor:'rgb(37,68,106)'}} fluid>
     {songs && (<>
-        <Link to={"/Artist/" + songs[0].artist.id} >
+        <Link to={"/Artist/" + artistId} >
             <p className="h1 text-left text-white">{search? search:"eminem"}</p>
         </Link>
             <SongSection songs={songs} />
