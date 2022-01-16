@@ -11,7 +11,7 @@ const SongCard = ({song}) => {
         {song && (<div>
         <div>
             <Link to={"/Album/" + song.album.id}>
-                <img src={song.album.cover} alt={song.album.title} />
+                <img src={song.album.cover_big} alt={song.album.title} style={{maxWidth:'200px'}}/>
             </Link>
         </div>
         <div>

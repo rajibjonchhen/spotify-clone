@@ -7,10 +7,10 @@ const MyLayout = (props) => {
     return(
         <Container fluid>
             <Row className=''>
-            <Col sm={4} md={3}  lg={2} className="bg-dark">
+            <Col   lg={2} className="bg-dark">
                 <Sidebar search={props.search} setSearch={props.setSearch}/>
             </Col>
-            <Col sm={8} md={9} lg={10} className="text-right" >
+            <Col lg={10} className="text-right" >
             {props.children}
             </Col>
             </Row>

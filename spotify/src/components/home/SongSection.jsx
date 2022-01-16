@@ -1,15 +1,18 @@
 import SongCard from './SongCard'
 import {Row} from 'react-bootstrap'
 import {useState, useEffect} from 'react'
+import Loader from '../Loader'
 
 
 const SongSection = (props) => {
 
     const[songs, setSongs]=useState([])
+    const[isLoading,setIsLoading]=useState(true)
+    const [errMsg,setErrMsg]=useState('')
     
     useEffect(()=>{          
         loadAlbums(props.search)   
-        },[])
+        },[props.search])
     
     const loadAlbums = async(search)=>{
     
@@ -25,19 +28,24 @@ const SongSection = (props) => {
                     let data = await response.json()
                     if(response.ok){
                         setSongs(data.data)
-                      
+                        setIsLoading(false)
+                    } else{
+                        setErrMsg("Error is displaying")
+                        setIsLoading(false)
                     }
                 } catch (error) {
                     console.log(error)
+                    setIsLoading(false)
+                    setErrMsg(error)
                 }
             }
     
    
-    return(<Row>
-        
-    {songs && songs.map((song,i)=> (
+    return(<Row > {/*className="row-cols-sm-2 row-cols-md-3 row-cols-lg-5" style={{flexWrap:'nowrap',overflow:'scroll'}}*/}
+        {isLoading? (<Loader/>):(songs && songs.map((song,i)=> (
         <SongCard key={i} song={song}/>
-        ))}
+        )))}
+    
         </Row>)
 }
 

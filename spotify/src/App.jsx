@@ -9,7 +9,7 @@ import Album from './components/album/Album';
 import MyLayout from './components/myLayout/MyLayout';
 import ErrorPage from './ErrorPage.jsx'
 function App() {
-  const[search,setSearch] = useState( "")
+  const[search,setSearch] = useState("trending")
   
   return (
     <div className="App">
@@ -17,7 +17,7 @@ function App() {
       
       <Routes>
         <Route path='/' element={<MyLayout search={search} setSearch={setSearch}>
-          <Home search={search}/>
+          <Home search={search} setSearch={setSearch}/>
         </MyLayout>}/>
         <Route path='/Artist/:ArtistId' element={<MyLayout>
           <Artist/>
