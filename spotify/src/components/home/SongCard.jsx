@@ -11,13 +11,13 @@ const SongCard = ({song}) => {
         {song && (<div>
         <div>
             <Link to={"/Album/" + song.album.id}>
-            <img src={song.album.cover} alt={song.album.title} />
+                <img src={song.album.cover} alt={song.album.title} />
             </Link>
         </div>
         <div>
             <p>{song.title}</p>
             <Link to={"/Artist/" + song.artist.id} >
-            <p>{song.artist.name}</p>
+                <p>{song.artist.name}</p>
             </Link>
             
         </div>
